@@ -9,10 +9,16 @@
 <body>
 	Hola, 
 	{% if users.is_authenticated %}
-	  {{user.username}}
+	  <form action="{% url 'logout' %}" method="post">
+		  {% csrf_token %}
+		  <button type="submit" >
+			  Cerrar sesión
+		  </button>
+	  </form>
 	{% else %}
 	  <a href="{% url 'Login' %}">Login </a>
 	{% endif %}
+	<a href="#" >Mi pedido</a>
 	<div class="container mx-auto">
    {% block content %} {% endblock content%}
 	</div>
